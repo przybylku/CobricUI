@@ -124,7 +124,7 @@
     "sourceMap": true,
     "outDir": "dist",
     "declarationDir": "types",
-    "rootDir": "./src",
+    "rootDir": "src",
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "esModuleInterop": false,
@@ -140,5 +140,5 @@
     "skipLibCheck": true
   },
   "include": ["./**/*"],
-  "exclude": ["dist"]
+  "exclude": ["dist", "example", "postcss.config.js"]
 }

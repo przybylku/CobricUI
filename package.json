@@ -1,22 +1,21 @@
 {
-  "name": "@przybylku/cobricui",
-  "version": "0.0.1",
+  "name": "@cobric/ui",
+  "version": "0.0.2",
   "description": "Advanced React components pack.",
   "type": "module",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/przybylku"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/przybylku/Cobric.git"
+    "url": "https://github.com/przybylku/CobricUI.git"
   },
   "scripts": {
-    "build": "rollup -c --bundleConfigAsCjs",
+    "build": "jest --passWithNoTests && rimraf dist && rollup -c ",
     "start": "rimraf dist && rollup -c -w",
-    "test": "jest"
+    "test": "jest",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "files": [
     "dist"
@@ -28,6 +27,7 @@
     "@babel/preset-env": "^7.25.9",
     "@babel/preset-react": "^7.25.9",
     "@babel/preset-typescript": "^7.25.9",
+    "@chromatic-com/storybook": "1.9.0",
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-typescript": "^12.1.1",
@@ -35,9 +35,12 @@
     "@storybook/addon-interactions": "^8.3.6",
     "@storybook/addon-links": "^8.3.6",
     "@storybook/addon-onboarding": "^8.3.6",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/addon-webpack5-compiler-swc": "1.0.5",
     "@storybook/blocks": "^8.3.6",
     "@storybook/react": "^8.3.6",
     "@storybook/react-webpack5": "^8.3.6",
+    "@storybook/test": "8.3.6",
     "@storybook/testing-library": "^0.2.2",
     "@testing-library/jest-dom": "^6.6.2",
     "@testing-library/react": "^16.0.1",

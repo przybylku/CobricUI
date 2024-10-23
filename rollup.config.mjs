@@ -4,7 +4,9 @@ import typescript from "rollup-plugin-typescript2";
 import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
 import packageJson from "./package.json" assert { type: "json" };
+import tailwindcss from "tailwindcss";
 
+import tailwindConfig from "./tailwind.config.js";
 export default [
   {
     input: "src/index.ts",
@@ -28,12 +30,15 @@ export default [
         exclude: ["**/*.test.tsx", "**/*.test.ts", "**/*.stories.ts"],
       }),
       postcss({
+        config: {
+          path: "./postcss.config.cjs",
+        },
         extensions: [".css"],
-        inject: { insertAt: "top" },
         minimize: true,
-        sourceMap: true,
-        extract: false,
-        modules: true,
+        inject: {
+          insertAt: "top",
+        },
+        plugins: [tailwindcss(tailwindConfig)],
       }),
     ],
   },
@@ -43,4 +48,21 @@ export default [
     plugins: [dts()],
     external: [/\.css$/],
   },
+  // {
+  //   input: "src/index.css",
+  //   output: [{ file: "dist/index.css", format: "es" }],
+  //   plugins: [
+  //     postcss({
+  //       config: {
+  //         path: "./postcss.config.cjs",
+  //       },
+  //       extensions: [".css"],
+  //       minimize: true,
+  //       inject: {
+  //         insertAt: "top",
+  //       },
+  //       plugins: [tailwindcss(tailwindConfig)],
+  //     }),
+  //   ],
+  // },
 ];
