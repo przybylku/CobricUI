@@ -13,13 +13,19 @@
   "scripts": {
     "build": "jest --passWithNoTests && rimraf dist && rollup -c ",
     "start": "rimraf dist && rollup -c -w",
-    "test": "jest",
+    "test": "jest ",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "files": [
     "dist"
   ],
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/src/__mocks__/styleMock.js"
+    }
+  },
   "author": "przybylku",
   "license": "MIT",
   "devDependencies": {
@@ -65,5 +71,10 @@
   },
   "peerDependencies": {
     "react": "^18.3.1"
+  },
+  "dependencies": {
+    "@babel/plugin-syntax-typescript": "^7.25.9",
+    "@babel/plugin-transform-react-jsx": "^7.25.9",
+    "babel-plugin-transform-export-extensions": "^6.22.0"
   }
 }
