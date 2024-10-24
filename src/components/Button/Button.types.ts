@@ -11,7 +11,18 @@ export interface ButtonCobricProps
     to: "top" | "right" | "bottom" | "left";
     colorFrom: string;
     colorTo: string;
+    fontColor?: string;
   };
   loading?: boolean;
   disabled?: boolean;
 }
+
+export type ButtonCobricGradientProps = {
+  gradient?: {
+    from: "top" | "right" | "bottom" | "left";
+    to: "top" | "right" | "bottom" | "left";
+    colorFrom: string;
+    colorTo: string;
+    fontColor?: string;
+  };
+};

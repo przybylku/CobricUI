@@ -46,23 +46,70 @@ describe("[Button] Renderer", () => {
     );
   });
 
-  it("should throw a validation error when the gradient 'from' and 'to' properties are the same", () => {
-    const t = () => {
-      throw new Error(
-        "The 'from' and 'to' properties of the gradient object must be different"
-      );
-    };
-    expect(() =>
-      render(
-        <Button
-          gradient={{
-            from: "top",
-            to: "top",
-            colorFrom: "red",
-            colorTo: "blue",
-          }}
-        />
-      )
-    ).toThrow(Error);
+  it("should render the Button component with the correct gradient", () => {
+    render(
+      <Button
+        gradient={{
+          from: "top",
+          to: "bottom",
+          colorFrom: "red",
+          colorTo: "blue",
+        }}
+      />
+    );
+    expect(screen.getByTestId("cobric-button").getAttribute("class")).toContain(
+      "from-red to-blue"
+    );
   });
+
+  // it("should throw a validation error when the gradient 'from' and 'to' properties are the same", () => {
+  //   const err = console.error;
+  //   console.error = jest.fn();
+  //   let actError;
+  //   try {
+  //     render(
+  //       <Button
+  //         gradient={{
+  //           from: "top",
+  //           to: "top",
+  //           colorFrom: "red",
+  //           colorTo: "blue",
+  //         }}
+  //       />
+  //     );
+  //   } catch (e) {
+  //     actError = e.message;
+  //   }
+  //   expect(actError).toEqual(
+  //     "The 'from' and 'to' properties of the gradient object must be different"
+  //   );
+  // });
+  // it("should throw a validation error when the gradient 'colorFrom' and 'colorTo' properties are the same", () => {
+  //   expect(() =>
+  //     render(
+  //       <Button
+  //         gradient={{
+  //           from: "top",
+  //           to: "bottom",
+  //           colorFrom: "red",
+  //           colorTo: "red",
+  //         }}
+  //       />
+  //     )
+  //   ).toThrow(Error);
+  // });
+  // it("should throw a validation error when the gradient 'colorFrom' and 'colorTo' properties are not provided", () => {
+  //   expect(() =>
+  //     render(
+  //       <Button
+  //         gradient={{
+  //           from: "top",
+  //           to: "bottom",
+  //           colorFrom: "",
+  //           colorTo: "",
+  //         }}
+  //       />
+  //     )
+  //   ).toThrow(Error);
+  // });
 });

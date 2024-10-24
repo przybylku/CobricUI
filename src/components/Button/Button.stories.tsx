@@ -15,3 +15,14 @@ type Story = StoryObj<typeof Button>;
 export const Primary: Story = {
   args: { size: "large" },
 };
+
+export const Gradient: Story = {
+  args: {
+    gradient: {
+      from: "top",
+      to: "bottom",
+      colorFrom: "red-200",
+      colorTo: "blue-500",
+    },
+  },
+};

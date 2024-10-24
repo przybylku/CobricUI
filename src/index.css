@@ -1,9 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
 
-@layer {
-  .cobric-button {
-    @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
-  }
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+.from-blue {
+  @apply from-blue-500 text-white;
+}
+
+.to-red {
+  @apply to-red-500 text-white;
 }

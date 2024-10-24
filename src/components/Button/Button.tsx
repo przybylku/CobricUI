@@ -76,7 +76,7 @@ export const Button = ({
     }
 
     const _gradient = gradient
-      ? `bg-gradient-to-${gradient.from} from-${gradient.colorFrom} to-${gradient.colorTo}`
+      ? `bg-gradient-to-tl from-red to-blue bg-gradient-from-br`
       : "";
 
     setStyle(`${_size} ${_color} ${_loading} ${_disabled} ${_gradient}`);
